@@ -66,9 +66,9 @@ slider.addEventListener("touchend ", () => {
   isDown = false;
 });
 
-slider.addEventListener("mouseup", () => {
-  isDown = false;
-});
+// slider.addEventListener("mouseup", () => {
+//   isDown = false;
+// });
 
 slider.addEventListener("touchmove ", (e) => {
   if (!isDown) return;
