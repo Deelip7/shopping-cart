@@ -56,13 +56,13 @@ let isDown = false;
 let startX;
 let scrollLeft;
 
-slider.addEventListener("mousedown touchstart", (e) => {
+slider.addEventListener("touchstart", (e) => {
   isDown = true;
   startX = e.pageX - slider.offsetLeft;
   scrollLeft = slider.scrollLeft;
 });
 
-slider.addEventListener("mouseleave touchend ", () => {
+slider.addEventListener("touchend ", () => {
   isDown = false;
 });
 
@@ -70,7 +70,7 @@ slider.addEventListener("mouseup", () => {
   isDown = false;
 });
 
-slider.addEventListener("mousemove touchmove ", (e) => {
+slider.addEventListener("touchmove ", (e) => {
   if (!isDown) return;
   e.preventDefault();
   const x = e.pageX - slider.offsetLeft;
