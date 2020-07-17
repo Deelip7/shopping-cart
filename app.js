@@ -56,13 +56,13 @@ let isDown = false;
 let startX;
 let scrollLeft;
 
-slider.addEventListener("mousedown", (e) => {
+slider.addEventListener("mousedown touchstart", (e) => {
   isDown = true;
   startX = e.pageX - slider.offsetLeft;
   scrollLeft = slider.scrollLeft;
 });
 
-slider.addEventListener("mouseleave", () => {
+slider.addEventListener("mouseleave touchend ", () => {
   isDown = false;
 });
 
@@ -70,7 +70,7 @@ slider.addEventListener("mouseup", () => {
   isDown = false;
 });
 
-slider.addEventListener("mousemove", (e) => {
+slider.addEventListener("mousemove touchmove ", (e) => {
   if (!isDown) return;
   e.preventDefault();
   const x = e.pageX - slider.offsetLeft;
@@ -78,6 +78,7 @@ slider.addEventListener("mousemove", (e) => {
   slider.scrollLeft = scrollLeft - walk;
 });
 
+//----------------------------------------------------
 window.onscroll = function () {
   let x = document.querySelector(".product-in-cart");
   x.style.display = "none";
