@@ -56,21 +56,21 @@ let isDown = false;
 let startX;
 let scrollLeft;
 
-slider.addEventListener("touchstart", (e) => {
+slider.addEventListener("mousedown", (e) => {
   isDown = true;
   startX = e.pageX - slider.offsetLeft;
   scrollLeft = slider.scrollLeft;
 });
 
-slider.addEventListener("touchend ", () => {
+slider.addEventListener("mouseleave", () => {
   isDown = false;
 });
 
-// slider.addEventListener("mouseup", () => {
-//   isDown = false;
-// });
+slider.addEventListener("mouseup", () => {
+  isDown = false;
+});
 
-slider.addEventListener("touchmove ", (e) => {
+slider.addEventListener("mousemove", (e) => {
   if (!isDown) return;
   e.preventDefault();
   const x = e.pageX - slider.offsetLeft;
