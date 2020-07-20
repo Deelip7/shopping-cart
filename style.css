@@ -199,7 +199,9 @@ body {
   border-radius: 50%;
   padding: 12px;
 }
-
+.active {
+  color: rgb(0, 186, 53);
+}
 .product {
   display: flex;
   margin-top: 5px;

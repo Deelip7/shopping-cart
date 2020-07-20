@@ -40,6 +40,7 @@ cart_btn.addEventListener("click", () => {
   addToCartBtn.forEach(function (btn) {
     btn.addEventListener("click", function (event) {
       cart_empty.classList.add("hidden");
+      cart_empty.classList.add("hidden");
 
       currentItem_img = event.target.parentElement.children[0].children[0];
       currentItem_name = event.target.parentElement.children[1].innerText;
@@ -65,6 +66,8 @@ cart_btn.addEventListener("click", () => {
       z.innerText = currentItem_price;
       inDiv.appendChild(z);
       shopping_cart_item.appendChild(inDiv);
+      console.log(this.id);
+      this.innerHTML = "Added";
     });
   });
 })();
