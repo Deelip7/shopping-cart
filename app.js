@@ -1,97 +1,66 @@
-// let btn = document.querySelector(".btn");
-// let x = 0;
-// btn.addEventListener("click", () => {
-//   x++;
-//   let inputContainer = document.createElement("div");
-//   let title = document.createElement("input");
-//   let notes = document.createElement("textarea");
-//   let delbtn = document.createElement("button");
-//   let flip = document.createElement("button");
-//   let emptydiv = document.querySelector(".emptydiv");
-//   let answer = document.createElement("textarea");
+let addToCartBtn = document.querySelector(".card__addbtn");
 
-//   title.placeholder = "Set Title";
-//   title.classList.add("title");
-//   notes.placeholder = "Enter Question";
-//   answer.placeholder = "Enter Answer";
-//   notes.classList.add("notes");
-//   answer.classList.add("notes");
-//   answer.classList.add("answer");
-//   delbtn.classList.add("delbtn");
-//   flip.classList.add("flip");
-//   emptydiv.classList.add("hidcard");
+let card = document.querySelector(".card");
+let card__image = document.querySelector(".card__image");
+let card_title = document.querySelector(".card_title");
+let card__price = document.querySelector(".card__price");
 
-//   delbtn.innerText = "X";
-//   flip.innerText = "⥂";
-//   answer.classList.add("hidCard");
+let shopping_cart_item = document.querySelector(".shopping__cart");
+let shopping_cart = document.querySelector(".shopping__cart_item");
 
-//   inputContainer.classList.add("inputContainer");
-//   //   inputContainer.innerText = `Note - ${x}`;
+let shopping__cart_item_image = document.querySelector(
+  ".shopping__cart_item_image"
+);
+let shopping__cart_item_name = document.querySelector(
+  ".shopping__cart_item_name"
+);
 
-//   document.body.appendChild(inputContainer);
-//   inputContainer.appendChild(title);
-//   inputContainer.appendChild(notes);
-//   inputContainer.appendChild(delbtn);
-//   inputContainer.appendChild(answer);
-//   inputContainer.appendChild(flip);
+let shopping__cart_item_price = document.querySelector(
+  ".shopping__cart_item_price"
+);
 
-//   delbtn.onclick = () => {
-//     // inputContainer.classList.add("hidCard");
-//     document.body.removeChild(inputContainer);
-//   };
-//   flip.onclick = () => {
-//     inputContainer.classList.toggle("flips");
-//     answer.classList.toggle("hidCard");
-//     answer.classList.toggle("textareaFlips");
-//     delbtn.classList.toggle("textareaFlips");
-
-//     title.classList.toggle("hidCard");
-//     notes.classList.toggle("hidCard");
-//     notes.placeholder = "";
-//   };
+// addToCartBtn.addEventListener("click", () => {
+//   shopping__cart_item_image.appendChild(card__image.cloneNode(true));
+//   shopping__cart_item_name.appendChild(card_title.cloneNode(true));
+//   shopping__cart_item_price.appendChild(card__price.cloneNode(true));
 // });
 
-const slider = document.querySelector(".cart__images");
-let isDown = false;
-let startX;
-let scrollLeft;
+// addToCartBtn2.addEventListener("click", () => {
+//   shopping__cart_item_image.appendChild(card__image.cloneNode(true));
+//   shopping__cart_item_name.appendChild(card_title.cloneNode(true));
+//   shopping__cart_item_price.appendChild(card__price.cloneNode(true));
+// });
 
-slider.addEventListener("mousedown", (e) => {
-  isDown = true;
-  startX = e.pageX - slider.offsetLeft;
-  scrollLeft = slider.scrollLeft;
-});
+(function () {
+  let addToCartBtn = document.querySelectorAll(".card__addbtn");
 
-slider.addEventListener("mouseleave", () => {
-  isDown = false;
-});
+  addToCartBtn.forEach(function (btn) {
+    btn.addEventListener("click", function (event) {
+      currentItem_img = event.target.parentElement.children[0].children[0];
+      currentItem_name = event.target.parentElement.children[1].innerText;
+      currentItem_price = event.target.parentElement.children[2].innerText;
 
-slider.addEventListener("mouseup", () => {
-  isDown = false;
-});
+      // console.log(currentItem_name.innerText);
 
-slider.addEventListener("mousemove", (e) => {
-  if (!isDown) return;
-  e.preventDefault();
-  const x = e.pageX - slider.offsetLeft;
-  const walk = (x - startX) * 3; //scroll-fast
-  slider.scrollLeft = scrollLeft - walk;
-});
+      let inDiv = document.createElement("div");
+      inDiv.classList.add("shopping__cart_item");
 
-//----------------------------------------------------
-window.onscroll = function () {
-  let x = document.querySelector(".product-in-cart");
-  x.style.display = "none";
-};
+      let x = document.createElement("div");
+      x.classList.add("shopping__cart_item_image");
+      x.appendChild(currentItem_img.cloneNode(true));
+      inDiv.appendChild(x);
 
-let prevScrollpos = window.pageYOffset;
-let x = document.querySelector(".product-in-cart");
-window.onscroll = function () {
-  let currentScrollPos = window.pageYOffset;
-  if (prevScrollpos > currentScrollPos) {
-    x.style.bottom = "0";
-  } else {
-    x.style.bottom = "-150px";
-  }
-  prevScrollpos = currentScrollPos;
-};
+      let y = document.createElement("div");
+      // y.appendChild(currentItem_name.cloneNode(true));
+      y.innerText = currentItem_name;
+      inDiv.appendChild(y);
+
+      let z = document.createElement("div");
+      // z.appendChild(currentItem_price.cloneNode(true));
+      z.innerText = currentItem_price;
+      inDiv.appendChild(z);
+
+      shopping_cart_item.appendChild(inDiv);
+    });
+  });
+})();
