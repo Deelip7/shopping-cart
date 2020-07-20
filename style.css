@@ -294,6 +294,20 @@ body {
 }
 
 /*--------------------------- shopping__cart ---------------------*/
+.cart_empty {
+  display: block;
+}
+.hidden {
+  display: none;
+}
+#cart_empty_icon {
+  width: 99%;
+  margin: 50px auto;
+  height: 100px;
+}
+.cart_empty_title {
+  padding: 15px 40px;
+}
 .shopping__cart_container {
   display: block;
   position: relative;

@@ -4,6 +4,7 @@ let card__image = document.querySelector(".card__image");
 let card_title = document.querySelector(".card_title");
 let card__price = document.querySelector(".card__price");
 
+let cart_empty = document.querySelector(".cart_empty");
 let shopping_cart_item = document.querySelector(".shopping__cart");
 let shopping_cart = document.querySelector(".shopping__cart_item");
 
@@ -31,19 +32,15 @@ let shopping__cart_item_price = document.querySelector(
 // });
 
 cart_btn.addEventListener("click", () => {
-  // if ((shopping_cart_item.style.display = "none")) {
-  //   shopping_cart_item.style.display = "block";
-  // } else if ((shopping_cart_item.style.display = "block")) {
-  //   shopping_cart_item.style.display = "none";
-  // }
   shopping_cart_item.classList.toggle("show");
 });
 
 (function () {
   let addToCartBtn = document.querySelectorAll(".card__addbtn");
-
   addToCartBtn.forEach(function (btn) {
     btn.addEventListener("click", function (event) {
+      cart_empty.classList.add("hidden");
+
       currentItem_img = event.target.parentElement.children[0].children[0];
       currentItem_name = event.target.parentElement.children[1].innerText;
       currentItem_price = event.target.parentElement.children[2].innerText;
@@ -67,7 +64,6 @@ cart_btn.addEventListener("click", () => {
       // z.appendChild(currentItem_price.cloneNode(true));
       z.innerText = currentItem_price;
       inDiv.appendChild(z);
-
       shopping_cart_item.appendChild(inDiv);
     });
   });
