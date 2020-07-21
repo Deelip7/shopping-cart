@@ -21,57 +21,84 @@ let shopping__cart_item_name = document.querySelector(
 let shopping__cart_item_price = document.querySelector(
   ".shopping__cart_item_price"
 );
-
 let counter = 0;
-
 let addToCartBtn = document.querySelectorAll(".card__addbtn");
+let itemAdded;
+
+// ---------------------------------------------------------------------
+
 (function () {
   addToCartBtn.forEach(function (btn) {
     btn.addEventListener("click", function (event) {
-      cart_empty.classList.add("hidden");
-      cart_empty.classList.add("hidden");
+      if (this.innerHTML == "Add to Cart") {
+        cart_empty.classList.add("hidden");
+        cart_empty.classList.add("hidden");
 
-      currentItem_img = event.target.parentElement.children[0].children[0];
-      currentItem_name = event.target.parentElement.children[1].innerText;
-      currentItem_price = event.target.parentElement.children[2].innerText;
+        currentItem_img = event.target.parentElement.children[0].children[0];
+        currentItem_name = event.target.parentElement.children[1].innerText;
+        currentItem_price = event.target.parentElement.children[2].innerText;
 
-      let inDiv = document.createElement("div");
-      inDiv.classList.add("shopping__cart_item");
+        let inDiv = document.createElement("div");
+        inDiv.classList.add("shopping__cart_item");
 
-      let x = document.createElement("div");
-      x.classList.add("shopping__cart_item_image");
-      x.appendChild(currentItem_img.cloneNode(true));
-      inDiv.appendChild(x);
+        let x = document.createElement("div");
+        x.classList.add("shopping__cart_item_image");
+        x.appendChild(currentItem_img.cloneNode(true));
+        inDiv.appendChild(x);
 
-      let y = document.createElement("div");
-      y.innerText = currentItem_name;
-      inDiv.appendChild(y);
+        let y = document.createElement("div");
+        y.classList.add("item_name");
 
-      let z = document.createElement("div");
-      z.classList.add("item_price");
+        y.innerText = currentItem_name;
+        inDiv.appendChild(y);
 
-      let removebtn = document.createElement("div");
-      removebtn.classList.add("item_removebtn");
-      removebtn.innerText = "X";
-      inDiv.appendChild(removebtn);
-      // ---------------------------------------------------------------------
-      z.innerText = currentItem_price;
-      inDiv.appendChild(z);
-      shopping_cart_item.appendChild(inDiv);
-      cart_btn.innerHTML = "<img src='/Images/full_cart.PNG' />";
+        let z = document.createElement("div");
+        z.classList.add("item_price");
 
+        let removebtn = document.createElement("div");
+        removebtn.classList.add("item_removebtn");
+        // removebtn.innerText = "X";
+        inDiv.appendChild(removebtn);
+        // ---------------------------------------------------------------------
+        z.innerText = currentItem_price;
+        inDiv.appendChild(z);
+        shopping_cart_item.appendChild(inDiv);
+        cart_btn.innerHTML = "<img src='/Images/full_cart2.PNG' />";
+        removebtn.innerHTML =
+          "<img src='https://img.icons8.com/dusk/64/000000/cancel.png' />";
+        // "<img src='https://img.icons8.com/dusk/64/000000/delete-sign.png' />";
+
+        showTotal();
+        dupilcate(inDiv);
+        removeItem(removebtn, inDiv, this);
+      }
       this.innerHTML = "Added";
-      showTotal();
-      removeItem(removebtn, inDiv, this);
+      itemAdded = true;
+      console.log(itemAdded);
     });
   });
 })();
-// ----------------------------------------------------------------------------
+
+// -----------------------------Toggle Cart ----------------------------------------
 
 cart_btn.addEventListener("click", () => {
   shopping_cart_item.classList.toggle("show");
 });
+// -----------------------------showTotal----------------------------------------
 
+function dupilcate(x) {
+  const itemName = [];
+  let items = document.querySelectorAll(".item_name");
+  items.forEach(function (item) {
+    itemName.push(item.textContent);
+  });
+  // console.log(x);
+
+  // let unique = [...new Set(itemName)];
+  // console.log([...new Set(itemName)]);
+}
+
+// -----------------------------showTotal----------------------------------------
 function showTotal() {
   const total = [];
   counter = 0;
@@ -90,19 +117,22 @@ function showTotal() {
   totalPrice.innerText = `Total Cost: ${Math.round(totalAmount * 100) / 100}`;
 }
 
+// -----------------------------Remove item from cart-----------------------------------
 function removeItem(removebtn, inDiv, x) {
   removebtn.addEventListener("click", () => {
     inDiv.remove();
     showTotal();
     if (counter === 0) {
       cart_empty.classList.remove("hidden");
-      cart_btn.innerHTML = "<img src='/Images/empty_cart.PNG' />";
+      cart_btn.innerHTML = "<img src='/Images/empty_cart2.PNG' />";
+      itemAdded = false;
     }
     x.innerText = "Add to Cart";
+    console.log(itemAdded);
   });
 }
 
-//----------------------------------------------
+//------------------------Add to cart button onClick Effect ----------------------
 
 function btnEffect(e) {
   var targetEl = e.target;
