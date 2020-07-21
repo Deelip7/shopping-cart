@@ -48,14 +48,18 @@ body {
 /*------------------- Add to cart button -----------------------------------*/
 
 .cart_btn {
-  width: 50px;
-  height: 50px;
+  width: 80px;
+  height: 60px;
   border-left: 0.1rem solid #222831;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 5px;
   cursor: pointer;
+}
+.cart_btn img {
+  width: 50px;
+  height: 50px;
 }
 
 /*------------------------------------------------------*/

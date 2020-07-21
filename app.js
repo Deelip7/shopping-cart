@@ -58,6 +58,8 @@ let addToCartBtn = document.querySelectorAll(".card__addbtn");
       z.innerText = currentItem_price;
       inDiv.appendChild(z);
       shopping_cart_item.appendChild(inDiv);
+      cart_btn.innerHTML = "<img src='/Images/full_cart.PNG' />";
+
       this.innerHTML = "Added";
       showTotal();
       removeItem(removebtn, inDiv, this);
@@ -94,6 +96,7 @@ function removeItem(removebtn, inDiv, x) {
     showTotal();
     if (counter === 0) {
       cart_empty.classList.remove("hidden");
+      cart_btn.innerHTML = "<img src='/Images/empty_cart.PNG' />";
     }
     x.innerText = "Add to Cart";
   });
