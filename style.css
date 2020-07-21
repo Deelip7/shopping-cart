@@ -45,20 +45,21 @@ body {
   width: 60px;
   height: 40px;
 }
+/*------------------- Add to cart button -----------------------------------*/
 
 .cart_btn {
-  width: 60px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   border-left: 0.1rem solid #222831;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 5px;
+  cursor: pointer;
 }
-.cart_btn:hover > * {
-  border: 0.1rem solid #222831a1;
-  border-radius: 50%;
-  padding: 12px;
-}
+
+/*------------------------------------------------------*/
+
 .active {
   color: rgb(0, 186, 53);
 }
@@ -145,6 +146,10 @@ body {
 
 .card__addbtn {
   display: block;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.2s ease;
+  z-index: 0;
   padding: 5px;
   margin: 5px auto;
   width: 100px;
@@ -153,10 +158,27 @@ body {
 
 .card__addbtn:hover {
   cursor: pointer;
-  /* transition-duration: 0.85s; */
-  /* transform: scale3d(1.05, 1, 2); */
 }
 
+.ink {
+  display: block;
+  position: absolute;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 100%;
+  transform: scale(0);
+  background: #312222a1;
+}
+
+.animate {
+  animation: ripple 0.65s linear;
+}
+
+@keyframes ripple {
+  100% {
+    opacity: 0;
+    transform: scale(2.5);
+  }
+}
 /*--------------------------- shopping__cart ---------------------*/
 .shopping__cart_added {
   display: flex;
