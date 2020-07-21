@@ -11,6 +11,12 @@
   outline: none;
   border: none;
 }
+.line_break {
+  width: 1000px;
+  height: 5px;
+  border: none;
+  border-bottom: 3px solid black;
+}
 
 body {
   font-size: 1rem;
@@ -24,12 +30,12 @@ body {
   max-width: 608px;
   margin: 0 auto;
   min-height: 100vh;
-  border: 0.1rem solid #312222a1;
 }
 
 .header {
   height: 50px;
   background-color: #ffffff;
+  border-bottom: 0.1rem solid #312222a1;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -115,13 +121,14 @@ body {
 }
 
 /*--------------------------- card ---------------------------*/
+
 .card {
   width: 200px;
   height: 300px;
   margin: 1px 1px;
   background-color: #ffffff;
   text-align: center;
-  border: 0.1rem solid #312222a1;
+  /* border: 0.1rem solid #312222a1; */
 }
 
 .card span {
