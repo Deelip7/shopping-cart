@@ -8,6 +8,7 @@ let cart_empty = document.querySelector(".cart_empty");
 let shopping_cart_item = document.querySelector(".shopping__cart");
 let shopping_cart = document.querySelector(".shopping__cart_item");
 let totalPrice = document.querySelector(".shopping__cart_totalPrice");
+let totalItem = document.querySelector(".shopping__cart_totalItem");
 
 let shopping__cart_item_image = document.querySelector(
   ".shopping__cart_item_image"
@@ -20,18 +21,6 @@ let shopping__cart_item_price = document.querySelector(
   ".shopping__cart_item_price"
 );
 
-// addToCartBtn.addEventListener("click", () => {
-//   shopping__cart_item_image.appendChild(card__image.cloneNode(true));
-//   shopping__cart_item_name.appendChild(card_title.cloneNode(true));
-//   shopping__cart_item_price.appendChild(card__price.cloneNode(true));
-// });
-
-// addToCartBtn2.addEventListener("click", () => {
-//   shopping__cart_item_image.appendChild(card__image.cloneNode(true));
-//   shopping__cart_item_name.appendChild(card_title.cloneNode(true));
-//   shopping__cart_item_price.appendChild(card__price.cloneNode(true));
-// });
-
 (function () {
   let addToCartBtn = document.querySelectorAll(".card__addbtn");
   addToCartBtn.forEach(function (btn) {
@@ -42,8 +31,6 @@ let shopping__cart_item_price = document.querySelector(
       currentItem_img = event.target.parentElement.children[0].children[0];
       currentItem_name = event.target.parentElement.children[1].innerText;
       currentItem_price = event.target.parentElement.children[2].innerText;
-
-      // console.log(currentItem_name.innerText);
 
       let inDiv = document.createElement("div");
       inDiv.classList.add("shopping__cart_item");
@@ -68,8 +55,7 @@ let shopping__cart_item_price = document.querySelector(
       this.innerHTML = "Added";
       // ----------------------------------------------------------------------------
       let price = showTotal();
-      totalPrice.innerText = `Total : ${price}`;
-      console.log(totalPrice);
+      totalPrice.innerText = `Total Cost: ${price}`;
     });
   });
 })();
@@ -80,14 +66,17 @@ cart_btn.addEventListener("click", () => {
 
 function showTotal() {
   const total = [];
+  let counter = 0;
   let items = document.querySelectorAll(".item_price");
   items.forEach(function (item) {
     total.push(parseFloat(item.textContent));
+    counter++;
   });
+  totalItem.innerText = `Total Item: ${counter}`;
   const totalAmount = total.reduce(function (total, item) {
     total += item;
     return total;
   }, 0);
 
-  return totalAmount;
+  return Math.round(totalAmount * 100) / 100;
 }

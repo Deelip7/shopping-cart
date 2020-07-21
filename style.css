@@ -158,6 +158,13 @@ body {
 }
 
 /*--------------------------- shopping__cart ---------------------*/
+.shopping__cart_added {
+  display: flex;
+  justify-content: space-between;
+  border: 1px rgb(168, 168, 168) solid;
+  max-width: 700px;
+  padding: 10px 10px;
+}
 .cart_empty {
   display: block;
 }
@@ -198,7 +205,6 @@ body {
 .shopping__cart_item {
   padding: 0 10px;
   display: flex;
-  width: 99%;
   height: 100px;
   justify-content: space-between;
   align-items: center;
