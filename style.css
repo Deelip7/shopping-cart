@@ -203,6 +203,7 @@ body {
 }
 
 .shopping__cart_item {
+  position: relative;
   padding: 0 10px;
   display: flex;
   height: 100px;
@@ -214,16 +215,18 @@ body {
   margin-top: 5px;
 }
 
-.shopping__cart_item_image img {
+.shopping__cart_item img {
   width: 80px;
   height: 80px;
 }
 
-.shopping__cart_item_price {
-  width: 200px;
-  text-align: end;
+.item_removebtn {
+  display: block;
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  cursor: pointer;
 }
-
 /*--------------------------- @media ---------------------*/
 /* 
 @media only screen and (max-width: 100px) {

@@ -9,6 +9,7 @@ let shopping_cart_item = document.querySelector(".shopping__cart");
 let shopping_cart = document.querySelector(".shopping__cart_item");
 let totalPrice = document.querySelector(".shopping__cart_totalPrice");
 let totalItem = document.querySelector(".shopping__cart_totalItem");
+let cartStatus = document.querySelector(".shopping__cart_added");
 
 let shopping__cart_item_image = document.querySelector(
   ".shopping__cart_item_image"
@@ -21,8 +22,10 @@ let shopping__cart_item_price = document.querySelector(
   ".shopping__cart_item_price"
 );
 
+let counter = 0;
+
+let addToCartBtn = document.querySelectorAll(".card__addbtn");
 (function () {
-  let addToCartBtn = document.querySelectorAll(".card__addbtn");
   addToCartBtn.forEach(function (btn) {
     btn.addEventListener("click", function (event) {
       cart_empty.classList.add("hidden");
@@ -41,24 +44,27 @@ let shopping__cart_item_price = document.querySelector(
       inDiv.appendChild(x);
 
       let y = document.createElement("div");
-      // y.appendChild(currentItem_name.cloneNode(true));
       y.innerText = currentItem_name;
       inDiv.appendChild(y);
 
       let z = document.createElement("div");
-      // z.appendChild(currentItem_price.cloneNode(true));
       z.classList.add("item_price");
 
+      let removebtn = document.createElement("div");
+      removebtn.classList.add("item_removebtn");
+      removebtn.innerText = "X";
+      inDiv.appendChild(removebtn);
+      // ---------------------------------------------------------------------
       z.innerText = currentItem_price;
       inDiv.appendChild(z);
       shopping_cart_item.appendChild(inDiv);
       this.innerHTML = "Added";
-      // ----------------------------------------------------------------------------
-      let price = showTotal();
-      totalPrice.innerText = `Total Cost: ${price}`;
+      showTotal();
+      removeItem(removebtn, inDiv, this);
     });
   });
 })();
+// ----------------------------------------------------------------------------
 
 cart_btn.addEventListener("click", () => {
   shopping_cart_item.classList.toggle("show");
@@ -66,7 +72,8 @@ cart_btn.addEventListener("click", () => {
 
 function showTotal() {
   const total = [];
-  let counter = 0;
+  counter = 0;
+
   let items = document.querySelectorAll(".item_price");
   items.forEach(function (item) {
     total.push(parseFloat(item.textContent));
@@ -78,5 +85,14 @@ function showTotal() {
     return total;
   }, 0);
 
-  return Math.round(totalAmount * 100) / 100;
+  totalPrice.innerText = `Total Cost: ${Math.round(totalAmount * 100) / 100}`;
+}
+
+function removeItem(removebtn, inDiv, x) {
+  removebtn.addEventListener("click", () => {
+    inDiv.remove();
+    showTotal();
+
+    x.innerText = "Add to Cart";
+  });
 }
