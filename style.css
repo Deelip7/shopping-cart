@@ -184,6 +184,21 @@ body {
   }
 }
 /*--------------------------- shopping__cart ---------------------*/
+.arrow {
+  position: absolute;
+  top: -10px;
+  right: 18px;
+  border-left: 32px solid #ffffff;
+  border-left-color: rgba(217, 12, 12, 0);
+  border-left-width: 22px;
+  border-right: 32px solid #ffffff;
+  border-right-color: rgba(248, 0, 0, 0);
+  border-right-width: 22px;
+  border-bottom: 2px solid rgba(255, 4, 4, 0);
+  border-bottom-color: #ffffff;
+  border-bottom-width: 20px;
+}
+
 .shopping__cart_added {
   display: flex;
   justify-content: space-between;
@@ -213,7 +228,7 @@ body {
 .shopping__cart {
   display: none;
   position: absolute;
-  margin: 55px auto;
+  margin: 61px auto;
   left: 0;
   right: 0;
   text-align: center;
