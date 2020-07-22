@@ -24,6 +24,7 @@ let shopping__cart_item_price = document.querySelector(
 let counter = 0;
 let addToCartBtn = document.querySelectorAll(".card__addbtn");
 let itemAdded;
+let itemCount;
 
 // ---------------------------------------------------------------------
 
@@ -40,6 +41,12 @@ let itemAdded;
 
         let inDiv = document.createElement("div");
         inDiv.classList.add("shopping__cart_item");
+
+        itemCount = document.createElement("input");
+        itemCount.setAttribute("type", "number");
+        itemCount.classList.add("itemCount");
+
+        inDiv.appendChild(itemCount);
 
         let x = document.createElement("div");
         x.classList.add("shopping__cart_item_image");
@@ -71,14 +78,17 @@ let itemAdded;
         showTotal();
         dupilcate(inDiv);
         removeItem(removebtn, inDiv, this);
+        counter = 1;
+      } else {
+        counter++;
       }
       this.innerHTML = "Added";
       itemAdded = true;
-      console.log(itemAdded);
+      console.log(counter);
+      itemCount.setAttribute("value", counter);
     });
   });
 })();
-
 // -----------------------------Toggle Cart ----------------------------------------
 
 cart_btn.addEventListener("click", () => {
@@ -128,7 +138,7 @@ function removeItem(removebtn, inDiv, x) {
       itemAdded = false;
     }
     x.innerText = "Add to Cart";
-    console.log(itemAdded);
+    console.log((counter = -1));
   });
 }
 
