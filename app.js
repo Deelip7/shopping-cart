@@ -75,17 +75,14 @@ let itemCount;
           "<img src='https://img.icons8.com/dusk/64/000000/cancel.png' />";
         // "<img src='https://img.icons8.com/dusk/64/000000/delete-sign.png' />";
 
-        showTotal();
+        counter = 2;
+        itemCount.setAttribute("value", counter);
+        showTotal(itemCount.value);
         dupilcate(inDiv);
-        removeItem(removebtn, inDiv, this);
-        counter = 1;
+        removeItem(removebtn, inDiv, this, itemCount.value);
       } else {
-        counter++;
       }
       this.innerHTML = "Added";
-      itemAdded = true;
-      console.log(counter);
-      itemCount.setAttribute("value", counter);
     });
   });
 })();
@@ -102,14 +99,10 @@ function dupilcate(x) {
   items.forEach(function (item) {
     itemName.push(item.textContent);
   });
-  // console.log(x);
-
-  // let unique = [...new Set(itemName)];
-  // console.log([...new Set(itemName)]);
 }
 
 // -----------------------------showTotal----------------------------------------
-function showTotal() {
+function showTotal(itemCount) {
   const total = [];
   counter = 0;
 
@@ -121,24 +114,23 @@ function showTotal() {
   totalItem.innerText = `Total Item: ${counter}`;
   const totalAmount = total.reduce(function (total, item) {
     total += item;
-    return total;
+    return total * itemCount;
   }, 0);
 
   totalPrice.innerText = `Total Cost: ${Math.round(totalAmount * 100) / 100}`;
 }
 
 // -----------------------------Remove item from cart-----------------------------------
-function removeItem(removebtn, inDiv, x) {
+function removeItem(removebtn, inDiv, x, z) {
   removebtn.addEventListener("click", () => {
     inDiv.remove();
     showTotal();
     if (counter === 0) {
       cart_empty.classList.remove("hidden");
       cart_btn.innerHTML = "<img src='/Images/empty_cart2.PNG' />";
-      itemAdded = false;
     }
     x.innerText = "Add to Cart";
-    console.log((counter = -1));
+    console.log(z);
   });
 }
 
