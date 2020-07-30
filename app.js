@@ -23,6 +23,7 @@ let shopping__cart_item_price = document.querySelector(
 );
 let itemIncrease = 1;
 let counter = 0;
+let itemAdded;
 let addToCartBtn = document.querySelectorAll(".card__addbtn");
 
 // ---------------------------------------------------------------------
@@ -75,18 +76,15 @@ let addToCartBtn = document.querySelectorAll(".card__addbtn");
         itemCount.addEventListener("change", updateValue);
         function updateValue(e) {
           let itemIncrease = e.target.value;
-
           let updatedValue =
             Math.round(currentItem_price * itemIncrease * 100) / 100;
-          showTotal();
-
           z.innerText = `${updatedValue}`;
-
-          totalItem.innerText = itemIncrease;
+          showTotal();
         }
 
         shopping_cart_item.appendChild(inDiv);
         cart_btn.innerHTML = "<img src='/Images/full_cart2.PNG' />";
+        cartStatus.style.display = "block";
         removeItem(removebtn, inDiv, this);
         showTotal();
       }
@@ -99,20 +97,19 @@ let addToCartBtn = document.querySelectorAll(".card__addbtn");
 cart_btn.addEventListener("click", () => {
   shopping_cart_item.classList.toggle("show");
 });
-function updateItemsCount(e) {}
 // -----------------------------showTotal----------------------------------------
 function showTotal() {
   const total = [];
   let items = document.querySelectorAll(".item_price");
   items.forEach(function (item) {
     total.push(parseFloat(item.textContent));
-    counter++;
   });
   const totalAmount = total.reduce(function (total, item) {
     total += item;
     return total;
   }, 0);
 
+  itemAdded = total > "0" ? true : false;
   totalPrice.innerText = `Sub Total : $${Math.round(totalAmount * 100) / 100}`;
 }
 
@@ -121,9 +118,12 @@ function removeItem(removebtn, inDiv, x, z) {
   removebtn.addEventListener("click", () => {
     inDiv.remove();
     showTotal();
-    if (counter === 0) {
+    if (itemAdded === false) {
       cart_empty.classList.remove("hidden");
-      cart_btn.innerHTML = "<img src='/Images/empty_cart2.PNG' />";
+      cart_btn.innerHTML = "<img src='/Images/empty_cart2.PNG'/>";
+      cartStatus.style.display = "none";
+    } else if (itemAdded === true) {
+      cartStatus.style.display = "block";
     }
     x.innerText = "Add to Cart";
   });
