@@ -21,10 +21,9 @@ let shopping__cart_item_name = document.querySelector(
 let shopping__cart_item_price = document.querySelector(
   ".shopping__cart_item_price"
 );
+let itemIncrease = 1;
 let counter = 0;
 let addToCartBtn = document.querySelectorAll(".card__addbtn");
-let itemAdded;
-let itemCount;
 
 // ---------------------------------------------------------------------
 
@@ -33,19 +32,21 @@ let itemCount;
     btn.addEventListener("click", function (event) {
       if (this.innerHTML == "Add to Cart") {
         cart_empty.classList.add("hidden");
-        cart_empty.classList.add("hidden");
 
-        currentItem_img = event.target.parentElement.children[0].children[0];
-        currentItem_name = event.target.parentElement.children[1].innerText;
-        currentItem_price = event.target.parentElement.children[2].innerText;
+        let currentItem_img =
+          event.target.parentElement.children[0].children[0];
+        let currentItem_name = event.target.parentElement.children[1].innerText;
+        let currentItem_price =
+          event.target.parentElement.children[2].innerText;
 
         let inDiv = document.createElement("div");
         inDiv.classList.add("shopping__cart_item");
 
-        itemCount = document.createElement("input");
+        let itemCount = document.createElement("input");
         itemCount.setAttribute("type", "number");
+        itemCount.setAttribute("min", "1");
         itemCount.classList.add("itemCount");
-
+        itemCount.setAttribute("value", 1);
         inDiv.appendChild(itemCount);
 
         let x = document.createElement("div");
@@ -61,26 +62,33 @@ let itemCount;
 
         let z = document.createElement("div");
         z.classList.add("item_price");
+        z.innerText = currentItem_price * itemCount.value;
+        inDiv.appendChild(z);
 
         let removebtn = document.createElement("div");
         removebtn.classList.add("item_removebtn");
-        // removebtn.innerText = "X";
-        inDiv.appendChild(removebtn);
-        // ---------------------------------------------------------------------
-        z.innerText = currentItem_price;
-        inDiv.appendChild(z);
-        shopping_cart_item.appendChild(inDiv);
-        cart_btn.innerHTML = "<img src='/Images/full_cart2.PNG' />";
         removebtn.innerHTML =
           "<img src='https://img.icons8.com/dusk/64/000000/cancel.png' />";
-        // "<img src='https://img.icons8.com/dusk/64/000000/delete-sign.png' />";
+        inDiv.appendChild(removebtn);
 
-        counter = 2;
-        itemCount.setAttribute("value", counter);
-        showTotal(itemCount.value);
-        dupilcate(inDiv);
-        removeItem(removebtn, inDiv, this, itemCount.value);
-      } else {
+        // ---------------------------------------------------------------------
+        itemCount.addEventListener("change", updateValue);
+        function updateValue(e) {
+          let itemIncrease = e.target.value;
+
+          let updatedValue =
+            Math.round(currentItem_price * itemIncrease * 100) / 100;
+          showTotal();
+
+          z.innerText = `${updatedValue}`;
+
+          totalItem.innerText = itemIncrease;
+        }
+
+        shopping_cart_item.appendChild(inDiv);
+        cart_btn.innerHTML = "<img src='/Images/full_cart2.PNG' />";
+        removeItem(removebtn, inDiv, this);
+        showTotal();
       }
       this.innerHTML = "Added";
     });
@@ -91,33 +99,21 @@ let itemCount;
 cart_btn.addEventListener("click", () => {
   shopping_cart_item.classList.toggle("show");
 });
+function updateItemsCount(e) {}
 // -----------------------------showTotal----------------------------------------
-
-function dupilcate(x) {
-  const itemName = [];
-  let items = document.querySelectorAll(".item_name");
-  items.forEach(function (item) {
-    itemName.push(item.textContent);
-  });
-}
-
-// -----------------------------showTotal----------------------------------------
-function showTotal(itemCount) {
+function showTotal() {
   const total = [];
-  counter = 0;
-
   let items = document.querySelectorAll(".item_price");
   items.forEach(function (item) {
     total.push(parseFloat(item.textContent));
     counter++;
   });
-  totalItem.innerText = `Total Item: ${counter}`;
   const totalAmount = total.reduce(function (total, item) {
     total += item;
-    return total * itemCount;
+    return total;
   }, 0);
 
-  totalPrice.innerText = `Total Cost: ${Math.round(totalAmount * 100) / 100}`;
+  totalPrice.innerText = `Sub Total : $${Math.round(totalAmount * 100) / 100}`;
 }
 
 // -----------------------------Remove item from cart-----------------------------------
@@ -130,7 +126,6 @@ function removeItem(removebtn, inDiv, x, z) {
       cart_btn.innerHTML = "<img src='/Images/empty_cart2.PNG' />";
     }
     x.innerText = "Add to Cart";
-    console.log(z);
   });
 }
 
@@ -152,3 +147,12 @@ function btnEffect(e) {
   inkEl.style.top = e.offsetY - inkEl.offsetHeight / 2 + "px";
   inkEl.classList.add("animate");
 }
+// -----------------------------showTotal----------------------------------------
+
+// function quantityChanged(event) {
+//   var input = event.target;
+//   if (isNaN(input.value) || input.value <= 0) {
+//     input.value = 1;
+//   }
+//   console.log(input);
+// }

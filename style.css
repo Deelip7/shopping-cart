@@ -201,11 +201,11 @@ body {
 }
 
 .itemCount {
-  max-width: 10%;
-  padding: 50px auto;
+  max-width: 7%;
   font-size: 1rem;
   border-right: 1px rgb(168, 168, 168) solid;
   flex-grow: 0.1;
+  height: 30px;
 }
 
 .shopping__cart_added {
