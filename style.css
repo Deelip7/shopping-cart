@@ -274,6 +274,8 @@ body {
 }
 .shopping__cart_added {
   display: none;
+  flex-direction: row;
+  justify-content: space-between;
   text-align: end;
   margin-top: 1px;
   padding: 20px 10px;

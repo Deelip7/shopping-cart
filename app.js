@@ -75,18 +75,19 @@ let addToCartBtn = document.querySelectorAll(".card__addbtn");
         itemCount.addEventListener("change", updateValue);
         function updateValue(e) {
           let itemIncrease = e.target.value;
-          let updatedValue = parseFloat(
-            currentItem_price * itemIncrease
-          ).toFixed(2);
-          z.innerText = updatedValue;
+          let parsedPrice = parseFloat(currentItem_price.replace(/[$]+/g, ""));
+          let updatedValue = (parsedPrice * itemIncrease).toFixed(2);
+          z.innerText = "$" + updatedValue;
           showTotal();
+          countItems();
         }
 
         shopping_cart_item.appendChild(inDiv);
         cart_btn.innerHTML = "<img src='/Images/full_cart2.PNG' />";
-        cartStatus.style.display = "block";
+        cartStatus.style.display = "flex";
         removeItem(removebtn, inDiv, this);
         showTotal();
+        countItems();
       }
       this.innerHTML = "Added";
     });
@@ -102,7 +103,9 @@ function showTotal() {
   const total = [];
   let items = document.querySelectorAll(".item_price");
   items.forEach(function (item) {
-    total.push(parseFloat(item.textContent));
+    let addTotal = item.textContent;
+    let parsedTotal = parseFloat(addTotal.replace(/[$]+/g, ""));
+    total.push(parsedTotal);
   });
   const totalAmount = total.reduce(function (total, item) {
     total += item;
@@ -116,7 +119,7 @@ function showTotal() {
 }
 
 // -----------------------------Remove item from cart-----------------------------------
-function removeItem(removebtn, inDiv, x, z) {
+function removeItem(removebtn, inDiv, x) {
   removebtn.addEventListener("click", () => {
     inDiv.remove();
     showTotal();
@@ -125,10 +128,22 @@ function removeItem(removebtn, inDiv, x, z) {
       cart_btn.innerHTML = "<img src='/Images/empty_cart2.PNG'/>";
       cartStatus.style.display = "none";
     } else if (itemAdded === true) {
-      cartStatus.style.display = "block";
+      cartStatus.style.display = "flex";
     }
     x.innerText = "Add to Cart";
+    countItems();
   });
 }
-
 // -----------------------------showTotal----------------------------------------
+function countItems() {
+  const numItem = [];
+  let numitemAdded = document.querySelectorAll(".itemCount");
+  numitemAdded.forEach(function (e) {
+    numItem.push(e.value);
+  });
+  const totalItemAdded = numItem.reduce(function (numItem, e) {
+    numItem += +e;
+    return numItem;
+  }, 0);
+  totalItem.innerText = `Items in Cart : ${totalItemAdded}`;
+}
