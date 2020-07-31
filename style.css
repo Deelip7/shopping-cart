@@ -227,12 +227,12 @@ body {
   top: 0;
   right: 0;
   z-index: 1;
+  height: 1257px;
 }
 
 .show {
   padding: 5px;
   width: 100vw;
-  height: 1257px;
 }
 
 .shopping__cart_item {
@@ -242,6 +242,7 @@ body {
   justify-content: space-between;
   align-items: center;
   overflow: hidden;
+  transition: all 0.3s ease;
   border-bottom: 1px rgba(168, 168, 168, 0.326) solid;
   box-shadow: 5px 1px 10px -2px #b4b4b46a;
   background-color: #ffffff;
@@ -250,6 +251,11 @@ body {
   padding: 0 10px;
 }
 
+.animate {
+  height: 0;
+  padding: 0;
+  margin: 0;
+}
 .shopping__cart_item_image img {
   width: 80px;
   height: 80px;
