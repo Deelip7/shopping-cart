@@ -48,7 +48,6 @@ let addToCartBtn = document.querySelectorAll(".card__addbtn");
         itemCount.setAttribute("min", "1");
         itemCount.classList.add("itemCount");
         itemCount.setAttribute("value", 1);
-        inDiv.appendChild(itemCount);
 
         let x = document.createElement("div");
         x.classList.add("shopping__cart_item_image");
@@ -57,28 +56,29 @@ let addToCartBtn = document.querySelectorAll(".card__addbtn");
 
         let y = document.createElement("div");
         y.classList.add("item_name");
-
         y.innerText = currentItem_name;
+        y.appendChild(itemCount);
         inDiv.appendChild(y);
 
         let z = document.createElement("div");
         z.classList.add("item_price");
-        z.innerText = currentItem_price * itemCount.value;
+        z.innerText = currentItem_price;
         inDiv.appendChild(z);
 
         let removebtn = document.createElement("div");
         removebtn.classList.add("item_removebtn");
-        removebtn.innerHTML =
-          "<img src='https://img.icons8.com/dusk/64/000000/cancel.png' />";
-        inDiv.appendChild(removebtn);
+        removebtn.innerText = "x";
+        // "<img src='https://img.icons8.com/dusk/64/000000/cancel.png' />";
+        y.appendChild(removebtn);
 
         // ---------------------------------------------------------------------
         itemCount.addEventListener("change", updateValue);
         function updateValue(e) {
           let itemIncrease = e.target.value;
-          let updatedValue =
-            Math.round(currentItem_price * itemIncrease * 100) / 100;
-          z.innerText = `${updatedValue}`;
+          let updatedValue = parseFloat(
+            currentItem_price * itemIncrease
+          ).toFixed(2);
+          z.innerText = updatedValue;
           showTotal();
         }
 
@@ -110,7 +110,9 @@ function showTotal() {
   }, 0);
 
   itemAdded = total > "0" ? true : false;
-  totalPrice.innerText = `Sub Total : $${Math.round(totalAmount * 100) / 100}`;
+  totalPrice.innerText = `Sub Total :  $${
+    Math.round(totalAmount * 100) / 100
+  } USD`;
 }
 
 // -----------------------------Remove item from cart-----------------------------------
@@ -129,30 +131,4 @@ function removeItem(removebtn, inDiv, x, z) {
   });
 }
 
-//------------------------Add to cart button onClick Effect ----------------------
-
-function btnEffect(e) {
-  var targetEl = e.target;
-  var inkEl = targetEl.querySelector(".ink");
-  if (inkEl) {
-    inkEl.classList.remove("animate");
-  } else {
-    inkEl = document.createElement("span");
-    inkEl.classList.add("ink");
-    inkEl.style.width = inkEl.style.height =
-      Math.max(targetEl.offsetWidth, targetEl.offsetHeight) + "px";
-    targetEl.appendChild(inkEl);
-  }
-  inkEl.style.left = e.offsetX - inkEl.offsetWidth / 2 + "px";
-  inkEl.style.top = e.offsetY - inkEl.offsetHeight / 2 + "px";
-  inkEl.classList.add("animate");
-}
 // -----------------------------showTotal----------------------------------------
-
-// function quantityChanged(event) {
-//   var input = event.target;
-//   if (isNaN(input.value) || input.value <= 0) {
-//     input.value = 1;
-//   }
-//   console.log(input);
-// }
