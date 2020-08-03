@@ -1,5 +1,4 @@
 @import "https://fonts.googleapis.com/css?family=Lato:400,700";
-@import url("https://fonts.googleapis.com/css2?family=Oswald&display=swap");
 
 *,
 *::before,
@@ -47,7 +46,6 @@ body {
   height: 40px;
 }
 /*------------------- Add to cart button -----------------------------------*/
-
 .cart_btn {
   width: 80px;
   height: 60px;
@@ -62,8 +60,6 @@ body {
   width: 40px;
   height: 40px;
 }
-
-/*------------------------------------------------------*/
 
 .active {
   color: rgb(0, 186, 53);
@@ -100,9 +96,6 @@ body {
   width: 50px;
   border-left: 0.1rem solid #312222a1;
 }
-/* .product-in-cart:hover {
-  height: 80px;
-} */
 
 .cart__images {
   display: flex;
@@ -128,14 +121,12 @@ body {
 }
 
 /*--------------------------- card ---------------------------*/
-
 .card {
   width: 200px;
   height: 300px;
   margin: 1px 1px;
   background-color: #ffffff;
   text-align: center;
-  /* border: 0.1rem solid #312222a1; */
 }
 
 .card span {
@@ -165,23 +156,7 @@ body {
 .card__addbtn:hover {
   cursor: pointer;
 }
-
 /*--------------------------- shopping__cart ---------------------*/
-/* .arrow {
-  position: absolute;
-  top: -15px;
-  right: 18px;
-  border-left: 32px solid #ffffff;
-  border-left-color: rgba(217, 12, 12, 0);
-  border-left-width: 15px;
-  border-right: 32px solid #ffffff;
-  border-right-color: rgba(248, 0, 0, 0);
-  border-right-width: 15px;
-  border-bottom: 32px solid rgba(255, 4, 4, 0);
-  border-bottom-color: #e3e3e3;
-  border-bottom-width: 15px;
-} */
-
 .itemCount {
   max-width: 50px;
   font-size: 1rem;
@@ -234,7 +209,6 @@ body {
   padding: 5px;
   width: 100vw;
 }
-
 .shopping__cart_item {
   position: relative;
   display: flex;
@@ -250,7 +224,6 @@ body {
   margin-top: 5px;
   padding: 0 10px;
 }
-
 .animate {
   height: 0;
   padding: 0;
@@ -291,9 +264,7 @@ body {
   order: 1;
   z-index: 5;
 }
-
 /*--------------------------- Footer ---------------------------*/
-
 footer {
   display: block;
   position: relative;
@@ -309,13 +280,8 @@ footer {
   border-top: 1px rgba(168, 168, 168, 0.396) solid;
   box-shadow: 5px 1px 10px -2px #3535356a;
 }
-
 /*--------------------------- @media ---------------------*/
-
 @media only screen and (min-width: 650px) {
-  /* .product {
-    max-width: 1000px;
-  } */
   .card {
     width: 300px;
     height: 400px;
