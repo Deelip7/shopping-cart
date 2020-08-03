@@ -10,22 +10,20 @@
   outline: none;
   border: none;
 }
-
 body {
-  font-size: 1rem;
-  font-family: "Lato", sans-serif !important;
-  background-color: #616263;
-  color: rgb(51, 51, 51);
+  font-size: 1.1rem;
+  font-family: "Lato", sans-serif;
+  background-color: #7d7d7d;
+  color: rgb(92, 92, 92);
 }
 .container {
   display: block;
   max-width: 1000px;
   position: relative;
-  margin: 0 auto;
+  margin: 10px auto;
   background-color: #ffffff;
   box-shadow: 5px 1px 10px -2px #3535356a;
 }
-
 .header {
   height: 60px;
   background-color: #ffffff;
@@ -54,10 +52,6 @@ body {
   width: 40px;
   height: 40px;
 }
-
-.active {
-  color: rgb(0, 186, 53);
-}
 .product {
   position: relative;
   display: flex;
@@ -68,7 +62,6 @@ body {
   padding: 30px 0;
   max-width: 910px;
 }
-
 .product-in-cart {
   display: flex;
   position: fixed;
@@ -80,17 +73,6 @@ body {
   border-top: 0.1rem solid #312222a1;
   align-items: center;
 }
-.left-arrow {
-  height: 100%;
-  width: 50px;
-  border-right: 0.1rem solid #312222a1;
-}
-.right-arrow {
-  height: 100%;
-  width: 50px;
-  border-left: 0.1rem solid #312222a1;
-}
-
 .cart__images {
   display: flex;
   margin: 0 auto;
@@ -101,7 +83,6 @@ body {
   cursor: pointer;
   user-select: none;
 }
-
 .product-added {
   flex-shrink: 0;
   margin-right: 10px;
@@ -113,7 +94,6 @@ body {
   background-size: 70px 70px;
   background-color: rgb(178, 178, 198);
 }
-
 /*--------------------------- card ---------------------------*/
 .card {
   width: 200px;
@@ -121,12 +101,13 @@ body {
   margin: 1px 1px;
   background-color: #ffffff;
   text-align: center;
+  border: 1px solid rgba(168, 168, 168, 0.312);
 }
-
 .card span {
   display: block;
   width: 100%;
   margin: 5px auto;
+  line-height: 1.3;
 }
 .card__image img {
   margin: auto;
@@ -134,7 +115,6 @@ body {
   height: 200px;
   object-fit: cover;
 }
-
 .card__addbtn {
   display: block;
   position: relative;
@@ -142,13 +122,15 @@ body {
   transition: all 0.2s ease;
   z-index: 0;
   padding: 5px;
-  margin: 5px auto;
-  width: 100px;
-  border: 1px rgb(168, 168, 168) solid;
+  margin: 10px auto;
+  width: 200px;
+  border: 1px rgb(221, 221, 221) solid;
+  box-shadow: 5px 1px 10px -2px #35353529;
 }
 
 .card__addbtn:hover {
   cursor: pointer;
+  background-color: #f3f3f3;
 }
 /*--------------------------- shopping__cart ---------------------*/
 .itemCount {
@@ -157,7 +139,6 @@ body {
   border: 1px rgba(168, 168, 168, 0.326) solid;
   padding: 5px 5px;
 }
-
 .cart_empty {
   display: block;
   max-width: 450px;
@@ -187,7 +168,6 @@ body {
   flex-direction: column;
   position: absolute;
   background-color: #e3e3e3;
-  border: 1px rgba(168, 168, 168, 0.326) solid;
   margin: 60px auto;
   height: 0px;
   overflow: hidden;
@@ -202,6 +182,7 @@ body {
 .show {
   padding: 5px;
   width: 100vw;
+  border: 1px rgba(168, 168, 168, 0.326) solid;
 }
 .shopping__cart_item {
   position: relative;
@@ -211,7 +192,6 @@ body {
   align-items: center;
   overflow: hidden;
   transition: all 0.3s ease;
-  border-bottom: 1px rgba(168, 168, 168, 0.326) solid;
   box-shadow: 5px 1px 10px -2px #b4b4b46a;
   background-color: #ffffff;
   flex-shrink: 0;
@@ -258,29 +238,12 @@ body {
   order: 1;
   z-index: 5;
 }
-/*--------------------------- Footer ---------------------------*/
-footer {
-  display: block;
-  position: relative;
-  max-width: 1000px;
-  margin: 0px auto;
-  padding: 0.8rem;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  font-size: 0.8rem;
-  background-color: rgb(255, 255, 255);
-  text-align: center;
-  border-top: 1px rgba(168, 168, 168, 0.396) solid;
-  box-shadow: 5px 1px 10px -2px #3535356a;
-}
 /*--------------------------- @media ---------------------*/
 @media only screen and (min-width: 650px) {
   .card {
     width: 300px;
     height: 400px;
   }
-
   .card__image img {
     height: 270px;
   }
