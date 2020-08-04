@@ -172,7 +172,7 @@ body {
   overflow: hidden;
   transition: all 0.3s ease;
   width: 0;
-  top: 5px;
+  top: 10px;
   right: 0;
   z-index: 1;
   height: 1257px;
