@@ -10,6 +10,7 @@
   outline: none;
   border: none;
 }
+
 body {
   font-size: 1.1rem;
   font-family: "Recursive", sans-serif;
@@ -138,6 +139,10 @@ body {
   margin: 0 auto;
   text-align: center;
 }
+input[type="number"]::-webkit-inner-spin-button {
+  opacity: 1;
+}
+
 .itemCount {
   max-width: 50px;
   font-size: 1rem;
