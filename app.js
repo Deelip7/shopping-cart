@@ -87,7 +87,7 @@ let addToCartBtn = document.querySelectorAll(".card__addbtn");
         countItems();
       }
       this.innerHTML = "Added";
-      this.style.backgroundColor = "#f5f5f5";
+      this.style.backgroundColor = "#initial";
     });
   });
 })();
@@ -131,7 +131,6 @@ function removeItem(removebtn, wrapperDiv, focus) {
         cartStatus.style.display = "flex";
       }
       focus.innerText = "Add to Cart";
-      focus.style.backgroundColor = "#ffffff";
 
       countItems();
     }, 500);

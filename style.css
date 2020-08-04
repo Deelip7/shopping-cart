@@ -1,4 +1,4 @@
-@import "https://fonts.googleapis.com/css?family=Lato:400,700";
+@import url("https://fonts.googleapis.com/css2?family=Recursive:wght@300&display=swap");
 
 *,
 *::before,
@@ -12,8 +12,8 @@
 }
 body {
   font-size: 1.1rem;
-  font-family: "Lato", sans-serif;
-  background-color: #7d7d7d;
+  font-family: "Recursive", sans-serif;
+  background-color: #393e46;
   color: rgb(92, 92, 92);
 }
 .container {
@@ -25,10 +25,11 @@ body {
   box-shadow: 5px 1px 10px -2px #3535356a;
 }
 .header {
-  height: 60px;
+  height: 70px;
   background-color: #ffffff;
   display: flex;
   justify-content: space-between;
+  border-top: 5px #00adb5 solid;
   border-bottom: 1px rgba(168, 168, 168, 0.326) solid;
   align-items: center;
   padding-left: 20px;
@@ -37,7 +38,35 @@ body {
   width: 60px;
   height: 40px;
 }
-/*------------------- Add to cart button -----------------------------------*/
+/*--------------------------- hero ---------------------------*/
+
+.hero {
+  position: relative;
+  max-width: 1000px;
+  background-image: linear-gradient(#ffffffdf, #b6eef175);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: no-wrap;
+  padding: 50px 10px;
+  text-align: center;
+}
+.hero > * {
+  font-size: 0.8rem;
+  position: relative;
+  display: block;
+}
+.hero h1 {
+  margin: 50px 0;
+}
+.hero h2 {
+  margin: 50px 0;
+}
+.hero img {
+  max-width: 250px;
+}
+/*--------------------------- Add to cart button ---------------------------*/
 .cart_btn {
   width: 80px;
   height: 60px;
@@ -52,56 +81,26 @@ body {
   width: 40px;
   height: 40px;
 }
+
+/*--------------------------- card ---------------------------*/
 .product {
   position: relative;
   display: flex;
-  margin: 10px auto 50px auto;
+  margin: 10px auto;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  padding: 30px 0;
+  top: -100px;
+  padding: 10px 0;
   max-width: 910px;
 }
-.product-in-cart {
-  display: flex;
-  position: fixed;
-  bottom: 0;
-  width: 600px;
-  height: 70px;
-  background-color: #ffffff;
-  transition: bottom 1s;
-  border-top: 0.1rem solid #312222a1;
-  align-items: center;
-}
-.cart__images {
-  display: flex;
-  margin: 0 auto;
-  padding: 0 10px;
-  overflow-x: hidden;
-  overflow-y: hidden;
-  white-space: nowrap;
-  cursor: pointer;
-  user-select: none;
-}
-.product-added {
-  flex-shrink: 0;
-  margin-right: 10px;
-  height: 60px;
-  width: 60px;
-  border: 0px red solid;
-  border-radius: 10%;
-  background-position: center;
-  background-size: 70px 70px;
-  background-color: rgb(178, 178, 198);
-}
-/*--------------------------- card ---------------------------*/
 .card {
   width: 200px;
-  height: 300px;
-  margin: 1px 1px;
+  height: 340px;
   background-color: #ffffff;
   text-align: center;
   border: 1px solid rgba(168, 168, 168, 0.312);
+  margin: 5px auto;
 }
 .card span {
   display: block;
@@ -123,27 +122,27 @@ body {
   z-index: 0;
   padding: 5px;
   margin: 10px auto;
-  width: 200px;
+  width: 150px;
   border: 1px rgb(221, 221, 221) solid;
   box-shadow: 5px 1px 10px -2px #35353529;
 }
 
 .card__addbtn:hover {
   cursor: pointer;
-  background-color: #f3f3f3;
+  background-color: #83f2f870;
 }
 /*--------------------------- shopping__cart ---------------------*/
-.itemCount {
-  max-width: 50px;
-  font-size: 1rem;
-  border: 1px rgba(168, 168, 168, 0.326) solid;
-  padding: 5px 5px;
-}
 .cart_empty {
   display: block;
   max-width: 450px;
   margin: 0 auto;
   text-align: center;
+}
+.itemCount {
+  max-width: 50px;
+  font-size: 1rem;
+  border: 1px rgba(168, 168, 168, 0.326) solid;
+  padding: 5px 5px;
 }
 .hidden {
   display: none;
@@ -167,13 +166,13 @@ body {
   display: flex;
   flex-direction: column;
   position: absolute;
-  background-color: #e3e3e3;
+  background-color: #eeeeee;
   margin: 60px auto;
   height: 0px;
   overflow: hidden;
   transition: all 0.3s ease;
   width: 0;
-  top: 0;
+  top: 5px;
   right: 0;
   z-index: 1;
   height: 1257px;
@@ -183,6 +182,7 @@ body {
   padding: 5px;
   width: 100vw;
   border: 1px rgba(168, 168, 168, 0.326) solid;
+  border-left: 1px #00dde970 solid;
 }
 .shopping__cart_item {
   position: relative;
@@ -195,7 +195,7 @@ body {
   box-shadow: 5px 1px 10px -2px #b4b4b46a;
   background-color: #ffffff;
   flex-shrink: 0;
-  margin-top: 5px;
+  margin-top: 2px;
   padding: 0 10px;
 }
 .animate {
@@ -208,6 +208,7 @@ body {
   height: 80px;
   flex-grow: 2;
   border-radius: 50%;
+  border: 2px #00dde970 solid;
 }
 .item_name {
   display: flex;
@@ -250,5 +251,18 @@ body {
   .show {
     width: 450px;
     padding: 10px;
+  }
+  .card__addbtn {
+    width: 200px;
+  }
+
+  .hero {
+    height: 50vh;
+    flex-direction: row;
+    padding: 40px 20px;
+  }
+
+  .hero img {
+    max-width: 450px;
   }
 }
